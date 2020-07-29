@@ -25,7 +25,7 @@ function deck(state = {}, action) {
         ...state,
         [deck]: {
           ...state[deck],
-          questions: [...state[deck].question, { question, answer, corrAnswer }]
+          questions: [...state[deck].questions, { question, answer, corrAnswer }]
         }
       }
     }
