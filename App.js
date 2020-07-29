@@ -1,23 +1,104 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import ListDecks from './components/ListDecks'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import NewDeck from './components/NewDeck'
+import DeckStructure from './components/DeckStructure'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import { createStore } from 'redux'
+import NewCard from './components/NewCard'
 
-export default function App() {
+const Tab = createBottomTabNavigator()
+
+function MyTabs() {
   return (
-    <View style={styles.container}>
-      <Text>
-        <ListDecks />
-      </Text>
-    </View>
+      <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ tintColor }) => {
+              let iconName
+              if (route.name === 'ListDecks') {
+                iconName = "cards";
+              } else if (route.name === 'NewDeck') {
+                iconName = "file-plus";
+              }
+              return (
+                <MaterialCommunityIcons name={iconName} size={24} color={tintColor} />
+              );
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: '#ff6600',
+            inactiveTintColor: 'black',
+            tabBarVisible: false,
+          }}>
+          <Tab.Screen
+            name="ListDecks"
+            component={ListDecks}
+            options={{ title: 'Decks' }}
+          />
+          <Tab.Screen
+            name="NewDeck"
+            component={NewDeck}
+            options={{ title: 'Add Deck', backgroundColor: '#5900b3' }}
+          />
+      </Tab.Navigator>
+  );
+}
+const Stack = createStackNavigator();
+function MyStack() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}
+      headerMode="float"
+      animation="fade"
+      >
+        <Stack.Screen name="Home" component={MyTabs}
+          options={() => ({
+          title: 'All Decks List',
+          headerTitleAlign: 'center'
+        })} />
+        <Stack.Screen name="DeckStructure" component={DeckStructure}
+        options={() => ({
+          title: 'Deck Info',
+          headerTitleAlign: 'center'
+        })}/>
+        <Stack.Screen name="NewCard" component={NewCard}
+        options={() => ({
+          title: 'Add New Card',
+          headerTitleAlign: 'center'
+        })}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
+}  
+class App extends Component {
+  render() {
+    return (
+    <Provider store={createStore(reducer)}>
+      <View style={styles.container}>
+        <MyStack />
+      </View>
+    </Provider>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'stretch',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8
+    backgroundColor: '#95d5db'
   }
 })
+
+
+export default App
