@@ -12,12 +12,12 @@ class DeckStructure extends Component {
     
     return(
       <View style={styles.container}>
-        <Text>{deckss[deck].title}</Text>
-        <Text>{deckss[deck].questions.length}</Text>
+        <Text style={styles.title}>{deckss[deck].title}</Text>
+        <Text style={styles.subTitle}>{deckss[deck].questions.length}</Text>
         <AddingButton styles={styles} text={'Add New Card'} color={navy}
         onPress={() => this.props.navigation.navigate('NewCard',{ Eid: deck })} />
         <AddingButton styles={styles} text={'Start Quiz'} color={lightgreen}
-        onPress={() => this.props.navigation.navigate('MainQuiz',{ Eid: deck })} />
+        onPress={() => this.props.navigation.navigate('QuizView',{ Eid: deck })} />
       </View>
     )
   }
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#95d5db'
+    backgroundColor: '#95d5db',
+    padding: 12
   },
   btn: {
     padding: 8,
@@ -41,6 +42,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 20
+  },
+  title: {
+    fontSize: 50,
+    marginBottom: 20
+  },
+  subTitle: {
+    fontSize: 35,
+    marginBottom: 80
   }
 })
 

@@ -13,6 +13,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { createStore } from 'redux'
 import NewCard from './components/NewCard'
+import QuizView from './components/QuizView'
 
 function MyStatus ({ backgroundColor, ...props }) {
   return (
@@ -83,6 +84,11 @@ function MyStack() {
         <Stack.Screen name="NewCard" component={NewCard}
         options={() => ({
           title: 'Add New Card',
+          headerTitleAlign: 'center'
+        })}/>
+        <Stack.Screen name="QuizView" component={QuizView}
+        options={() => ({
+          title: 'Give Quiz',
           headerTitleAlign: 'center'
         })}/>
       </Stack.Navigator>

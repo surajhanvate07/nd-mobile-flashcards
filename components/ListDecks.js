@@ -22,7 +22,7 @@ class ListDecks extends Component {
           return (
             <View key={deck} style={styles.cardItem}>
               <Text style={styles.text}>{title}</Text>
-              <Text>{questions.length}</Text>
+              <Text style={styles.len}>{questions.length}</Text>
               <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeckStructure', {Eid: deck})}
               > <Text style={styles.btnText}>View Deck</Text>
@@ -56,7 +56,11 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   text: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: 22
+  },
+  len: {
+    fontSize: 18
   }
 })
 
