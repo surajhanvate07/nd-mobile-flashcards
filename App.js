@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, StatusBar } from 'react-native'
+import Constants from 'expo-constants'
 import ListDecks from './components/ListDecks'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import NewDeck from './components/NewDeck'
+import { navy } from './utils/colors'
 import DeckStructure from './components/DeckStructure'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { createStore } from 'redux'
 import NewCard from './components/NewCard'
+
+function MyStatus ({ backgroundColor, ...props }) {
+  return (
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props}/>
+    </View>
+  )
+}
 
 const Tab = createBottomTabNavigator()
 
@@ -84,6 +94,7 @@ class App extends Component {
     return (
     <Provider store={createStore(reducer)}>
       <View style={styles.container}>
+        <MyStatus backgroundColor={navy} barStyle='light-content'/>
         <MyStack />
       </View>
     </Provider>

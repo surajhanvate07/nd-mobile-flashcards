@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { giveData } from '../utils/api'
 import { receiveDecks } from '../actions'
@@ -20,14 +20,13 @@ class ListDecks extends Component {
         {Object.keys(deckss).map((deck) => {
           const { title, questions } = deckss[deck]
           return (
-            <View key={deck}>
+            <View key={deck} style={styles.cardItem}>
               <Text style={styles.text}>{title}</Text>
               <Text>{questions.length}</Text>
-              <Button 
-              title="View Deck"
+              <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeckStructure', {Eid: deck})}
-              >
-              </Button>
+              > <Text style={styles.btnText}>View Deck</Text>
+              </TouchableOpacity>
             </View>
           )
         })}
@@ -39,8 +38,22 @@ class ListDecks extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignSelf:'stetched', 
+    padding: 5
+  },
+  cardItem: {
+    flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 8,
+    height: 200,
+    borderRadius: 10,
+    backgroundColor: '#a1f06c' 
+  },
+  btnText: {
+    backgroundColor: '#802ab5',
+    borderRadius: 3,
+    color: 'white',
   },
   text: {
     fontWeight: "bold"
