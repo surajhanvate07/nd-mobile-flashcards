@@ -22,6 +22,7 @@ class NewCard extends Component {
   }
 
   render() {
+    const { question, answer, corrAnswer } = this.state
     const deckName = this.props.route.params.Eid
 
     return(
@@ -48,9 +49,14 @@ class NewCard extends Component {
             placeholder='Correct Answer'
           ></TextInput>
 
+          {question === '' || answer === '' || corrAnswer === ''
+          ? (
+            <Text style={styles.unfinish}>Fill all the Inputs</Text>
+          ) : (
           <TouchableOpacity style={styles.btn} onPress={() => this.submittedCard(deckName)}>
             <Text style={styles.btnText}>Submit!</Text>
           </TouchableOpacity>
+          )}
         </View>
       </KeyboardAvoidingView>
     )
@@ -74,6 +80,9 @@ const styles= StyleSheet.create({
   btnText: {
     color: 'white',
     textAlign: 'center'
+  },
+  unfinish: {
+    marginTop: 30,
   },
   text: {
     color: '#2f08bf',

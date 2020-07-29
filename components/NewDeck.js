@@ -27,7 +27,7 @@ class NewDeck extends Component {
           style={styles.ipText}
           placeholder=' Enter Title'>
         </TextInput>
-        <Button onPress={this.submitDeck} title='submit' style={styles.subBtn}>
+        <Button disabled={!this.state.initText} onPress={this.submitDeck} title='submit' style={styles.subBtn}>
         </Button>
       </View>
     )
