@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 import { giveData } from '../utils/api'
 import { connect } from 'react-redux'
+import { deleteDeck } from '../actions'
+import { removeDeck } from '../utils/api'
 import AddingButton from './AddingButton'
 import { lightgreen, navy } from '../utils/colors'
 
 class DeckStructure extends Component {
+
+  delDeck = () => {
+    const deck = this.props.route.params.Eid;
+
+    removeDeck(deck)
+    this.props.dispatch(deleteDeck(deck))
+    this.props.navigation.navigate('ListDecks')
+  }  
+
   render() {
       const deck = this.props.route.params.Eid;
       const { deckss } = this.props
@@ -19,6 +30,7 @@ class DeckStructure extends Component {
           onPress={() => this.props.navigation.navigate('NewCard',{ Eid: deck })} />
           <AddingButton styles={styles} text={'Start Quiz'} color={lightgreen}
           onPress={() => this.props.navigation.navigate('QuizView',{ Eid: deck })} />
+          <Button title='Delete Deck' onPress={this.delDeck}></Button>
         </View>
       </View>
     )

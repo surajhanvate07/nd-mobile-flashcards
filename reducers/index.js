@@ -1,4 +1,4 @@
-import { ADD_DECK, ADD_CARD_DECK, RECEIVE_DECKS} from "../actions";
+import { ADD_DECK, ADD_CARD_DECK, RECEIVE_DECKS, DELETE_DECK} from "../actions";
 
 function deck(state = {}, action) {
   switch(action.type) {
@@ -28,6 +28,11 @@ function deck(state = {}, action) {
           questions: [...state[deck].questions, { question, answer, corrAnswer }]
         }
       }
+    }
+    case DELETE_DECK: {
+      const newState = Object.assign({}, state)
+      delete newState[action.deck];
+      return newState
     }
     default:
       return state

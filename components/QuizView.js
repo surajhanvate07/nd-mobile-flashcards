@@ -52,7 +52,7 @@ class QuizView extends Component {
     const deckss= this.props.deckss
     const number = this.state.quesNo + 1
     const deck = this.props.route.params.Eid
-
+    
     if(quesNo === deckss[deck].questions.length) {
       return (
         <View style={styles.container}>
@@ -61,6 +61,18 @@ class QuizView extends Component {
             </Text>
             <AddingButton styles={styles} text={'Try Again'} color={red} 
               onPress={this.repeatQuiz}/>
+            <AddingButton styles={styles} text={'Return Back'} color={green}
+              onPress={this.returnBack}/>
+          </View>
+        </View>
+      )
+    }
+    else if(deckss[deck].questions.length === 0) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.card}>
+            <Text> There are no questions in this card, at first add some questions!
+            </Text>
             <AddingButton styles={styles} text={'Return Back'} color={green}
               onPress={this.returnBack}/>
           </View>

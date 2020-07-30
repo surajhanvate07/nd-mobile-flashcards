@@ -81,3 +81,18 @@ export function newCardToDeck(name, card) {
     return res
   })
 }
+
+export function removeDeck(title) {
+  return AsyncStorage.mergeItem(FLASHCARDS_DATA_KEY, JSON.stringify({
+    [title]:{
+      title: title,
+      questions: []
+    }
+  }))
+  return AsyncStorage.getItem(FLASHCARDS_DATA_KEY).then((deckss)=>{
+      const data=JSON.parse(deckss)
+      data[title]=undefined
+      delete data[title]
+     AsyncStorage.setItem(FLASHCARDS_DATA_KEY,JSON.stringify(data))
+  })
+}
