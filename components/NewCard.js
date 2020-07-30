@@ -28,6 +28,7 @@ class NewCard extends Component {
     return(
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
         <View style={styles.container}>
+          <View style={styles.cardItem}>
           <Text style={styles.text}>Add your Question?</Text>
           <TextInput style={styles.inpText}
             onChangeText={(question) => this.setState({question})} 
@@ -58,6 +59,7 @@ class NewCard extends Component {
           </TouchableOpacity>
           )}
         </View>
+        </View>
       </KeyboardAvoidingView>
     )
   }
@@ -70,6 +72,16 @@ const styles= StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#95d5db'
   },
+   cardItem: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 8,
+    height: 200,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    backgroundColor: '#f59d71'
+  },
   btn: {
     backgroundColor: '#138504',
     padding: 10,
@@ -81,12 +93,12 @@ const styles= StyleSheet.create({
     color: 'white',
     textAlign: 'center'
   },
-  unfinish: {
-    marginTop: 30,
-  },
   text: {
     color: '#2f08bf',
     fontSize: 16
+  },
+  unfinish: {
+    marginTop: 30,
   },
   inpText: {
     borderRadius: 6,

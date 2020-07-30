@@ -43,17 +43,19 @@ const startData = {
       }
     ]
   }
-}
+};
 
 export const giveData = () => {
-  return startData
+  return {
+    startData
+  } 
 }
 
 export function getDecks() {
   return AsyncStorage.getItem(FLASHCARDS_DATA_KEY)
   .then(res =>{
     if(res === null) {
-      AsyncStorage.getItem(FLASHCARDS_DATA_KEY,JSON.stringify(startData))
+      AsyncStorage.setItem(FLASHCARDS_DATA_KEY,JSON.stringify(startData))
       return startData
     } else {
       return JSON.parse(res)

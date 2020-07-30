@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     margin: 8,
     height: 200,
     borderRadius: 10,
-    backgroundColor: '#a1f06c' 
+    alignSelf: 'stretch',
+    backgroundColor: '#a1f06c'
   },
   btnText: {
     backgroundColor: '#802ab5',
