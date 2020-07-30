@@ -20,12 +20,12 @@ class QuizView extends Component {
       : this.setState({ showQuestion: false })
   );
 
-  submitAnswer = () => {
+  submitAnswer = (answer) => {
     const { quesNo } = this.state
     const deckss= this.props.deckss
     const deck = this.props.route.params.Eid
     const correct = deckss[deck].questions[quesNo].corrAnswer.toLowerCase()
-    const answer = deckss[deck].questions[quesNo].answer
+    //const answer = deckss[deck].questions[quesNo].answer
 
     if(answer === correct){
       this.setState({ correct: this.state.correct + 1 })
