@@ -14,7 +14,7 @@ class NewDeck extends Component {
 
     saveDeckTitle(initText)
     this.props.dispatch(addNewDeck(initText))
-    this.props.navigation.navigate('DeckStructure',{ Eid: initText })
+    this.props.navigation.navigate('ListDecks',{ Eid: initText })
     this.setState({ initText: '' })
   }
 

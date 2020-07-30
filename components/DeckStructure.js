@@ -14,7 +14,7 @@ class DeckStructure extends Component {
       <View style={styles.container}>
         <View style={styles.cardItem}>
           <Text style={styles.title}>{deckss[deck].title}</Text>
-          <Text style={styles.subTitle}>{deckss[deck].questions.length}</Text>
+          <Text style={styles.subTitle}>{deckss[deck].questions.length} Cards</Text>
           <AddingButton styles={styles} text={'Add New Card'} color={navy}
           onPress={() => this.props.navigation.navigate('NewCard',{ Eid: deck })} />
           <AddingButton styles={styles} text={'Start Quiz'} color={lightgreen}

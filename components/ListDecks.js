@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Button, TouchableOpacity, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { giveData } from '../utils/api'
 import { receiveDecks } from '../actions'
@@ -16,13 +16,13 @@ class ListDecks extends Component {
     const { deckss } = this.props;
     
     return(
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {Object.keys(deckss).map((deck) => {
           const { title, questions } = deckss[deck]
           return (
             <View key={deck} style={styles.cardItem}>
               <Text style={styles.text}>{title}</Text>
-              <Text style={styles.len}>{questions.length}</Text>
+              <Text style={styles.len}>{questions.length} Cards</Text>
               <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeckStructure', {Eid: deck})}
               > <Text style={styles.btnText}>View Deck</Text>
@@ -30,7 +30,7 @@ class ListDecks extends Component {
             </View>
           )
         })}
-      </View>
+      </ScrollView>
     )
   }
 }

@@ -27,7 +27,7 @@ class QuizView extends Component {
     const correct = deckss[deck].questions[quesNo].corrAnswer.toLowerCase()
     //const answer = deckss[deck].questions[quesNo].answer
 
-    if(answer === correct){
+    if(answer.trim() === correct.trim()){
       this.setState({ correct: this.state.correct + 1 })
     } 
     else {
