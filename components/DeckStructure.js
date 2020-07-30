@@ -11,7 +11,7 @@ class DeckStructure extends Component {
 
   delDeck = () => {
     const deck = this.props.route.params.Eid;
-
+        
     removeDeck(deck)
     this.props.dispatch(deleteDeck(deck))
     this.props.navigation.navigate('ListDecks')
@@ -20,6 +20,10 @@ class DeckStructure extends Component {
   render() {
       const deck = this.props.route.params.Eid;
       const { deckss } = this.props
+
+      const deckDetails = deckss[deck];
+      if(!deckDetails)
+        return null;
     
     return(
       <View style={styles.container}>

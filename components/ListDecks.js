@@ -25,7 +25,8 @@ class ListDecks extends Component {
               <Text style={styles.len}>{questions.length} Cards</Text>
               <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeckStructure', {Eid: deck})}
-              > <Text style={styles.btnText}>View Deck</Text>
+              >
+              <Text style={styles.btnText}>View Deck</Text>
               </TouchableOpacity>
             </View>
           )
@@ -38,7 +39,7 @@ class ListDecks extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignSelf:'stetched', 
+    alignSelf:'stretch',
     padding: 5
   },
   cardItem: {
