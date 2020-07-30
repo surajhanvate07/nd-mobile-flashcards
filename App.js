@@ -14,6 +14,7 @@ import reducer from './reducers'
 import { createStore } from 'redux'
 import NewCard from './components/NewCard'
 import QuizView from './components/QuizView'
+import { setLocalNotification } from './utils/notification'
 
 function MyStatus ({ backgroundColor, ...props }) {
   return (
@@ -96,6 +97,11 @@ function MyStack() {
   )
 }  
 class App extends Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
     <Provider store={createStore(reducer)}>
