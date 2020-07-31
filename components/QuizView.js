@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { NavigationActions } from 'react-navigation'
 import { CommonActions } from '@react-navigation/native'
-import { blue, red, orange, green } from '../utils/colors'
+import { red, green } from '../utils/colors'
 import { connect } from 'react-redux'
 import { QuizInfo } from './QuizInfo'
 import AddingButton from './AddingButton'
@@ -53,7 +53,7 @@ class QuizView extends Component {
     const number = this.state.quesNo + 1
     const deck = this.props.route.params.Eid
     
-    if(quesNo === deckss[deck].questions.length) {
+    if(quesNo === deckss[deck].questions.length && deckss[deck].questions.length !== 0) {
       return (
         <View style={styles.container}>
           <View style={styles.card}>
@@ -71,7 +71,7 @@ class QuizView extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.card}>
-            <Text> There are no questions in this card, at first add some questions!
+            <Text style={styles.ques}> There are no questions in this card, at first add some questions!
             </Text>
             <AddingButton styles={styles} text={'Return Back'} color={green}
               onPress={this.returnBack}/>

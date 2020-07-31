@@ -1,5 +1,5 @@
-import React,{ Component } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import { Text, TouchableOpacity } from 'react-native'
 
 export function QuizInfo({ onPress, style, text }) {
   return(
