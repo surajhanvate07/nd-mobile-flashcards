@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, AsyncStorage } from 'react-native'
-import { Permissions, Notifications } from 'expo'
+import * as Notifications from 'expo-notifications'
+import * as Permissions from 'expo-permissions';
 
 const NOTIFICATION_DATA = 'flashcards_notifications'
 
